@@ -6,13 +6,8 @@
 }
 
 .container{
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
-}
-
-header{
-    background: whitesmoke;
-    color: #151719;
 }
 
 header::after{
@@ -71,35 +66,14 @@ nav a:hover::before{
 
 #sidebar {
     position:fixed;
-    width:350px;
+    width:525px;
     height:100%;
-    background:#151719;
-    left:-350px;
-    transition:all 250ms linear;
-}
-
-#sidebar.active {
-    left:0px;
-
-}
-
-#sidebar .toggle-btn{
-    position:absolute;
-    left:360px;
-    top:20px;    
-}
-
-#sidebar .toggle-btn span {
-    display: block;
-    width: 30px;
-    height: 5px;
-    background:#151719;
-    margin:5px 0px;
+    background:whitesmoke;
 }
 
 #map {
-    height: 1050px;
-    width:1300px;
+    height: 1073px;
+    width:1370px;
     border: 5px solid #151719;
     float: right;
 }
