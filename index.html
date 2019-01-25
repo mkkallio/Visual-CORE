@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Visual-CORE | Home</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+        crossorigin=""></script>
+
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <header>
+            <div class="container">
+                <div id="logo">
+                    <img src="img/logo.png" id="logo" href="index.html">
+                </div>
+                <nav>
+                    <ul>
+                        <li class="current"><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="help.html">Help</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- Map Section -->
+        <section id="mapSection">
+            <!--<div class="container"> -->
+                <h1>This is a map</h1>
+                <div id="map"></div>
+            <!--</div> -->
+        </section>
+        <!-- Info / Results Section-->
+        <section id="boxes">
+            <div class="container">
+                <div class="box">
+                    <img src="img/test.jpg">
+                    <h3>Placeholder information box</h3>
+                    <p>Placeholder information</p>
+                </div>
+                <div class="box">
+                    <img src="img/test.jpg">
+                    <h3>Placeholder information box</h3>
+                    <p>Placeholder information</p>
+                </div>
+                <div class="box">
+                    <img src="img/test.jpg">
+                    <h3>Placeholder information box</h3>
+                    <p>Placeholder information</p>
+                </div>
+                <div class="box">
+                    <img src="img/test.jpg">
+                    <h3>Placeholder information box</h3>
+                    <p>Placeholder information</p>
+                </div>
+                <div class="box">
+                    <img src="img/test.jpg">
+                    <h3>Placeholder information box</h3>
+                    <p>Placeholder information</p>
+                </div>
+                <div class="box">
+                    <img src="img/test.jpg">
+                    <h3>Placeholder information box</h3>
+                    <p>Placeholder information</p>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer>
+            <p>Footer placeholder.</p>
+        </footer>
+
+
+
+        <script>
+            var mymap = L.map('map').setView([16.9459, 97.9593], 13);
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoibWthbGxpbzIiLCJhIjoiY2pyN3Fha2hyMDBxNzN4cW5sYm12MWkwbyJ9.q1pVLHFRx0Cav6vmyACAYw'
+            }).addTo(mymap);
+        </script>
+        <script src="index.js"></script>
+    </body>
+</html>
