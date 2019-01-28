@@ -73,6 +73,69 @@ header a:hover{
 }
 
 /* Map Section */
+#mapSection h1{
+    text-align: center;
+}
+
+#map {
+    height:100%;
+}
+
+/* Info / Results */
+#boxes{
+    margin-top: 20px;
+}
+
+#boxes .box{
+    float:left;
+    text-align: center;
+    width:30%;
+    padding:10px;
+}
+
+/* About */
+article#mainArticle{
+    float:left;
+    width:65%;
+}
+
+article h1{
+    text-align: center;
+}
+
+aside#sidebar{
+    float:right;
+    width:30%;
+    margin-top:10px;
+}
+
+/* Help */
+
+article#helpArticle{
+    float:left;
+    width: 100%;
+}
+
+ul#helpSteps li{
+    list-style: none;
+    padding:20px;
+    margin-bottom:5px;
+    background:#e6e6e6;
+    text-align: center;
+}
+
+
+/* Footer */
+footer{
+    padding:20px;
+    text-align: center;
+    margin-top: 20px;
+    background-color:#e8491d;
+    color:#f4f4f4;
+}
+
+/* Media Queries */
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     #mapSection{
@@ -123,70 +186,27 @@ header a:hover{
     }
 }
 
-#mapSection h1{
-    text-align: center;
-}
 
-#map {
-    height:100%;
-}
 
-/* Info / Results */
-#boxes{
-    margin-top: 20px;
-}
+@media(max-width: 768px){
+    header #logo,
+    header nav,
+    header nav li,
+    #boxes .box,
+    #mainArticle,
+    #sidebar,
+    #helpArticle{
+        width:100% !important;
+        float:none;
+        text-align: center;
+        padding:5px;
+    }
 
-#boxes .box{
-    float:left;
-    text-align: center;
-    width:30%;
-    padding:10px;
-}
+    img{
+        width:90%;
+    }
 
-/* About */
-article#mainArticle{
-    float:left;
-    width:65%;
-}
-
-aside#sidebar{
-    float:right;
-    width:30%;
-    margin-top:10px;
-}
-
-/* Help */
-
-article#helpArticle{
-    float:left;
-    width:80%;
-}
-
-ul#helpSteps li{
-    list-style: none;
-    padding:20px;
-    margin-bottom:5px;
-    background:#e6e6e6;
-    text-align: center;
-}
-
-aside#stepbar{
-    float:right;
-    width:15%;
-    margin-top:10px;
-}
-
-aside#stepbar li{
-    list-style: none;
-    margin-bottom: 5px;
-    text-align: center;
-}
-
-/* Footer */
-footer{
-    padding:20px;
-    text-align: center;
-    margin-top: 20px;
-    background-color:#e8491d;
-    color:#f4f4f4;
+    header {
+        padding-bottom: 10px;
+    }
 }
