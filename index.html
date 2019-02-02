@@ -11,6 +11,11 @@
         <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
         integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
         crossorigin=""></script>
+        <script src="js/index.js"></script>
+        <script src="data/kayin_basins.GeoJSON" type="text/javascript"></script>
+        <script src="data/Kayin_townships.GeoJSON" type="text/javascript"></script>
+        <script src="data/Kayin_villages.GeoJSON" type="text/javascript"></script>
+        <script src="data/Kayin.GeoJSON" type="text/javascript"></script>
 
     </head>
     <body>
@@ -31,10 +36,8 @@
         </header>
         <!-- Map Section -->
         <section id="mapSection">
-            <!--<div class="container"> -->
                 <h1>This is a map</h1>
                 <div id="map"></div>
-            <!--</div> -->
         </section>
         <!-- Info / Results Section-->
         <section id="boxes">
@@ -86,7 +89,14 @@
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoibWthbGxpbzIiLCJhIjoiY2pyN3Fha2hyMDBxNzN4cW5sYm12MWkwbyJ9.q1pVLHFRx0Cav6vmyACAYw'
             }).addTo(mymap);
+            var kayinLayer = new L.GeoJSON(Kayin);       
+            kayinLayer.addTo(mymap);
+            var kayin_villagesLayer = new L.GeoJSON(Kayin_villages);       
+            kayin_villagesLayer.addTo(mymap);
+            var kayin_townshipsLayer = new L.GeoJSON(Kayin_townships);       
+            kayin_townshipsLayer.addTo(mymap);
+            var kayin_basinsLayer = new L.GeoJSON(kayin_basins);       
+            kayin_basinsLayer.addTo(mymap);
         </script>
-        <script src="index.js"></script>
     </body>
 </html>
