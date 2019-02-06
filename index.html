@@ -8,14 +8,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
         integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
         crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-        crossorigin=""></script>
-        <script src="js/index.js"></script>
-        <script src="data/kayin_basins.GeoJSON" type="text/javascript"></script>
-        <script src="data/Kayin_townships.GeoJSON" type="text/javascript"></script>
-        <script src="data/Kayin_villages.GeoJSON" type="text/javascript"></script>
-        <script src="data/Kayin.GeoJSON" type="text/javascript"></script>
+        
 
     </head>
     <body>
@@ -79,24 +72,13 @@
             <p>Footer placeholder.</p>
         </footer>
 
-
-
-        <script>
-            var mymap = L.map('map').setView([16.9459, 97.9593], 13);
-            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox.streets',
-            accessToken: 'pk.eyJ1IjoibWthbGxpbzIiLCJhIjoiY2pyN3Fha2hyMDBxNzN4cW5sYm12MWkwbyJ9.q1pVLHFRx0Cav6vmyACAYw'
-            }).addTo(mymap);
-            var kayinLayer = new L.GeoJSON(Kayin);       
-            kayinLayer.addTo(mymap);
-            var kayin_villagesLayer = new L.GeoJSON(Kayin_villages);       
-            kayin_villagesLayer.addTo(mymap);
-            var kayin_townshipsLayer = new L.GeoJSON(Kayin_townships);       
-            kayin_townshipsLayer.addTo(mymap);
-            var kayin_basinsLayer = new L.GeoJSON(kayin_basins);       
-            kayin_basinsLayer.addTo(mymap);
-        </script>
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+        crossorigin=""></script>
+        <script src="data/kayin_basins.GeoJSON" type="text/javascript"></script>
+        <script src="data/Kayin_townships.GeoJSON" type="text/javascript"></script>
+        <script src="data/Kayin_villages.GeoJSON" type="text/javascript"></script>
+        <script src="data/Kayin.GeoJSON" type="text/javascript"></script>
+        <script src="js/index.js"></script>
     </body>
 </html>
