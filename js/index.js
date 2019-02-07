@@ -40,22 +40,26 @@ var kayinLayer = new L.geoJson(Kayin, {
 
 var kayin_villagesLayer = new L.GeoJSON(Kayin_villages, {
     onEachFeature: kayinVillages
-    }).addTo(map);       
+    });      
 
 var kayin_townshipsLayer = new L.GeoJSON(Kayin_townships, {
     onEachFeature: kayinTownship
-    }).addTo(map);       
+    });     
 
 var kayin_basinsLayer = new L.GeoJSON(kayin_basins, {
     onEachFeature: kayinBasin
-    }).addTo(map);
+    });
 
 /* Toggle Layers Functions */
 function toggleKayinLayer() {
   if(!toggleKayin) {
     map.removeLayer(kayinLayer);
+    document.getElementById("kayinBtn").style.background = 'white';
+    document.getElementById("kayinBtn").style.color = 'black'
   } else {
     map.addLayer(kayinLayer);
+    document.getElementById("kayinBtn").style.background = '#4CAF50';
+    document.getElementById("kayinBtn").style.color = 'white'
   }
   toggleKayin = !toggleKayin;
 };
@@ -63,8 +67,12 @@ function toggleKayinLayer() {
 function toggleVillagesLayer() {
   if(!toggleVillages) {
     map.removeLayer(kayin_villagesLayer);
+    document.getElementById("villagesBtn").style.background = 'white';
+    document.getElementById("villagesBtn").style.color = 'black'
   } else {
     map.addLayer(kayin_villagesLayer);
+    document.getElementById("villagesBtn").style.background = '#4CAF50';
+    document.getElementById("villagesBtn").style.color = 'white'
   }
   toggleVillages = !toggleVillages;
 };
@@ -72,8 +80,12 @@ function toggleVillagesLayer() {
 function toggleTownshipsLayer() {
   if(!toggleTownships) {
     map.removeLayer(kayin_townshipsLayer);
+    document.getElementById("townshipsBtn").style.background = 'white';
+    document.getElementById("townshipsBtn").style.color = 'black'
   } else {
     map.addLayer(kayin_townshipsLayer);
+    document.getElementById("townshipsBtn").style.background = '#4CAF50';
+    document.getElementById("townshipsBtn").style.color = 'white'
   }
   toggleTownships = !toggleTownships;
 };
@@ -81,8 +93,12 @@ function toggleTownshipsLayer() {
 function toggleBasinsLayer() {
   if(!toggleBasins) {
     map.removeLayer(kayin_basinsLayer);
+    document.getElementById("basinsBtn").style.background = 'white';
+    document.getElementById("basinsBtn").style.color = 'black'
   } else {
     map.addLayer(kayin_basinsLayer);
+    document.getElementById("basinsBtn").style.background = '#4CAF50';
+    document.getElementById("basinsBtn").style.color = 'white'
   }
   toggleBasins = !toggleBasins;
 };

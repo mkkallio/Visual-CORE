@@ -81,6 +81,28 @@ header a:hover{
     height:100%;
 }
 
+#layerControl {
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width:80%;
+}
+
+.btn{
+    flex-grow: 1;
+    padding:5px;
+    font-size:20px;
+    margin-top: 5px;
+    background: white;
+    border: 1px solid black;
+}
+/* This is set on by default */
+#kayinBtn {
+    background: #4CAF50;
+    color:white;
+}
+
 /* Info / Results */
 #boxes{
     margin-top: 20px;
@@ -195,7 +217,9 @@ footer{
     #boxes .box,
     #mainArticle,
     #sidebar,
-    #helpArticle{
+    #helpArticle,
+    #layerControl,
+    #mapSection{
         width:100% !important;
         float:none;
         text-align: center;
