@@ -14,6 +14,7 @@ var toggleKayin = false;
 var toggleTownships = false;
 var toggleVillages = false;
 var toggleBasins = false;
+var toggleRivers = false;
 /* Map Functions */
 
 // Displays an popup on the map.
@@ -33,6 +34,12 @@ function kayinBasin (feature,layer){
     layer.bindPopup("<h1> Basin </h1>");
 };
 
+//rivers popup
+function krivers (feature,layer){
+  layer.bindPopup("<h1> Here's a river </h1>");
+};
+
+
 //Calls kayinState function when the layer is clicked.
 var kayinLayer = new L.geoJson(Kayin, {
     onEachFeature: kayinState
@@ -48,6 +55,10 @@ var kayin_townshipsLayer = new L.GeoJSON(Kayin_townships, {
 
 var kayin_basinsLayer = new L.GeoJSON(kayin_basins, {
     onEachFeature: kayinBasin
+    });
+
+var riversLayer = new L.GeoJSON(rivers, {
+    onEachFeature: krivers
     });
 
 /* Toggle Layers Functions */
@@ -101,4 +112,17 @@ function toggleBasinsLayer() {
     document.getElementById("basinsBtn").style.color = 'white'
   }
   toggleBasins = !toggleBasins;
+};
+
+function toggleRiversLayer() {
+  if(!toggleRivers) {
+    map.removeLayer(riversLayer);
+    document.getElementById("riversBtn").style.background = 'white';
+    document.getElementById("riversBtn").style.color = 'black'
+  } else {
+    map.addLayer(riversLayer);
+    document.getElementById("riversBtn").style.background = '#4CAF50';
+    document.getElementById("riversBtn").style.color = 'white'
+  }
+  toggleRivers = !toggleRivers;
 };
