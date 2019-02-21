@@ -1,77 +1,115 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <title>Visual-CORE | Home</title>
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-        crossorigin=""/>
-        
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Visual-CORE | Home</title>
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+crossorigin=""/>
 
-    </head>
-    <body>
-        <!-- Navigation Sidebar -->
-        <div class="sidenav">
-            <a href="#">Inputs</a>
-            <a href="#">Outputs</a>
-            <a href="about.html">About</a>
-            <a href="help.html">Help</a>
+</head>
+<body>
+<!-- Navigation Sidebar -->
+<div class="sidenavL">
+    <a href="#">Inputs</a>
+    <a href="#">Outputs</a>
+    <a href="about.html">About</a>
+    <a href="help.html">Help</a>
+</div>
+
+<!-- Map Section -->
+<div id="mapSection">
+    <div id="map"></div>
+</div>
+
+<footer>
+    <p>Footer placeholder.</p>
+</footer>
+
+<div class="sidenavR">
+        <div class="container">
+                <div class="box">
+                    <img src="img/test.jpg">
+                    <h3>Placeholder information box</h3>
+                    <p>Placeholder information</p>
+                </div>
+                <div class="box">
+                    <img src="img/test.jpg">
+                    <h3>Placeholder information box</h3>
+                    <p>Placeholder information</p>
+                </div>
+                <div class="box">
+                    <img src="img/test.jpg">
+                    <h3>Placeholder information box</h3>
+                    <p>Placeholder information</p>
+                </div>
+                <div class="box">
+                    <img src="img/test.jpg">
+                    <h3>Placeholder information box</h3>
+                    <p>Placeholder information</p>
+                </div>
+                <div class="box">
+                    <img src="img/test.jpg">
+                    <h3>Placeholder information box</h3>
+                    <p>Placeholder information</p>
+                </div>
+                <div class="box">
+                    <img src="img/test.jpg">
+                    <h3>Placeholder information box</h3>
+                    <p>Placeholder information</p>
+                </div>
         </div>
+</div>
 
-        <!-- Map Section -->
-        <section id="mapSection">
-                <div id="map"></div>
-        </section>
-        <!-- Info / Results Section-->
-        <section id="boxes">
-            <div class="container">
-                <div class="box">
-                    <img src="img/test.jpg">
-                    <h3>Placeholder information box</h3>
-                    <p>Placeholder information</p>
-                </div>
-                <div class="box">
-                    <img src="img/test.jpg">
-                    <h3>Placeholder information box</h3>
-                    <p>Placeholder information</p>
-                </div>
-                <div class="box">
-                    <img src="img/test.jpg">
-                    <h3>Placeholder information box</h3>
-                    <p>Placeholder information</p>
-                </div>
-                <div class="box">
-                    <img src="img/test.jpg">
-                    <h3>Placeholder information box</h3>
-                    <p>Placeholder information</p>
-                </div>
-                <div class="box">
-                    <img src="img/test.jpg">
-                    <h3>Placeholder information box</h3>
-                    <p>Placeholder information</p>
-                </div>
-                <div class="box">
-                    <img src="img/test.jpg">
-                    <h3>Placeholder information box</h3>
-                    <p>Placeholder information</p>
-                </div>
-            </div>
-        </section>
-        <!-- Footer -->
-        <footer>
-            <p>Footer placeholder.</p>
-        </footer>
 
-        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-        crossorigin=""></script>
-        <script src="data/kayin_basins.GeoJSON" type="text/javascript"></script>
-        <script src="data/Kayin_townships.GeoJSON" type="text/javascript"></script>
-        <script src="data/Kayin_villages.GeoJSON" type="text/javascript"></script>
-        <script src="data/Kayin.GeoJSON" type="text/javascript"></script>
-        <script src="data/rivers.GeoJSON" type="text/javascript"></script>
-        <script src="js/index.js"></script>
-    </body>
+<!-- Info / Results Section-->
+<!--<section id="boxes">
+    <div class="container">
+        <div class="box">
+            <img src="img/test.jpg">
+            <h3>Placeholder information box</h3>
+            <p>Placeholder information</p>
+        </div>
+        <div class="box">
+            <img src="img/test.jpg">
+            <h3>Placeholder information box</h3>
+            <p>Placeholder information</p>
+        </div>
+        <div class="box">
+            <img src="img/test.jpg">
+            <h3>Placeholder information box</h3>
+            <p>Placeholder information</p>
+        </div>
+        <div class="box">
+            <img src="img/test.jpg">
+            <h3>Placeholder information box</h3>
+            <p>Placeholder information</p>
+        </div>
+        <div class="box">
+            <img src="img/test.jpg">
+            <h3>Placeholder information box</h3>
+            <p>Placeholder information</p>
+        </div>
+        <div class="box">
+            <img src="img/test.jpg">
+            <h3>Placeholder information box</h3>
+            <p>Placeholder information</p>
+        </div>
+    </div>
+</section> -->
+<!-- Footer -->
+
+
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+crossorigin=""></script>
+<script src="data/kayin_basins.GeoJSON" type="text/javascript"></script>
+<script src="data/Kayin_townships.GeoJSON" type="text/javascript"></script>
+<script src="data/Kayin_villages.GeoJSON" type="text/javascript"></script>
+<script src="data/Kayin.GeoJSON" type="text/javascript"></script>
+<script src="data/rivers.GeoJSON" type="text/javascript"></script>
+<script src="js/index.js"></script>
+</body>
 </html>

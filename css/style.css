@@ -13,9 +13,9 @@ body{
 /* Global styling */
 
 /* The sidebar menu */
-.sidenav {
+.sidenavL {
     height: 100%;
-    width: 150px;
+    width: 20%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -25,7 +25,7 @@ body{
     padding-top: 20px;
 }
 
-.sidenav a {
+.sidenavL a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
@@ -33,7 +33,31 @@ body{
     display: block;
 }
 
-.sidenav a:hover {
+.sidenavL a:hover {
+    color: #f1f1f1;
+}
+
+.sidenavR {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #323451;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenavR a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+}
+
+.sidenavR a:hover {
     color: #f1f1f1;
 }
 
@@ -98,9 +122,12 @@ header a:hover{
 }
 
 /* Map Section */
-/*#mapSection {
-    margin-left: px;
-}*/
+#mapSection {
+    position: absolute;
+    width:60%;
+    height:70%;
+    margin-left: 20%;
+}
 
 #mapSection h1{
     text-align: center;
@@ -108,42 +135,14 @@ header a:hover{
 
 #map {
     height:100%;
-    margin-left: 20px;
 }
 
-#layerControl {
-    margin:auto;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width:80%;
-    margin-left:160px;
-    padding-top:10px;
-}
-
-.btn{
-    flex-grow: 1;
-    padding:5px;
-    font-size:20px;
-    margin-top: 5px;
-    background: white;
-    border: 1px solid black;
-}
-/* This is set on by default */
-#kayinBtn {
-    background: #4CAF50;
-    color:white;
-}
 
 /* Info / Results */
-#boxes{
-    margin-top: 20px;
-}
-
-#boxes .box{
+.box{
     float:left;
     text-align: center;
-    width:30%;
+    width:100%;
     padding:10px;
 }
 
