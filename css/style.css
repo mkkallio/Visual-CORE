@@ -12,6 +12,31 @@ body{
 
 /* Global styling */
 
+/* The sidebar menu */
+.sidenav {
+    height: 100%;
+    width: 150px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #323451;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
 .container{
     width:80%;
     margin:auto;
@@ -73,12 +98,17 @@ header a:hover{
 }
 
 /* Map Section */
+/*#mapSection {
+    margin-left: px;
+}*/
+
 #mapSection h1{
     text-align: center;
 }
 
 #map {
     height:100%;
+    margin-left: 20px;
 }
 
 #layerControl {
@@ -87,6 +117,8 @@ header a:hover{
     justify-content: center;
     flex-wrap: wrap;
     width:80%;
+    margin-left:160px;
+    padding-top:10px;
 }
 
 .btn{
@@ -152,11 +184,17 @@ footer{
     padding:20px;
     text-align: center;
     margin-top: 20px;
-    background-color:#e8491d;
+    background-color:#e05a47;
     color:#f4f4f4;
 }
 
 /* Media Queries */
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

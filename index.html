@@ -12,32 +12,18 @@
 
     </head>
     <body>
-        <!-- Navigation Bar -->
-        <header>
-            <div class="container">
-                <div id="logo">
-                    <img src="img/logo.png" id="logo" href="index.html">
-                </div>
-                <nav>
-                    <ul>
-                        <li class="current"><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="help.html">Help</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <!-- Navigation Sidebar -->
+        <div class="sidenav">
+            <a href="#">Inputs</a>
+            <a href="#">Outputs</a>
+            <a href="about.html">About</a>
+            <a href="help.html">Help</a>
+        </div>
+
         <!-- Map Section -->
         <section id="mapSection">
                 <div id="map"></div>
         </section>
-        <div id="layerControl">
-            <button class="btn" id="kayinBtn" onclick="toggleKayinLayer()"> Kayin </button>
-            <button class="btn" id="basinsBtn" onclick="toggleBasinsLayer()"> Basins</button>
-            <button class="btn" id="villagesBtn" onclick="toggleVillagesLayer()"> Villages</button>
-            <button class="btn" id="townshipsBtn" onclick="toggleTownshipsLayer()"> Townships</button>
-            <button class="btn" id="riversBtn" onclick="toggleRiversLayer()"> Rivers</button>
-        </div>
         <!-- Info / Results Section-->
         <section id="boxes">
             <div class="container">
