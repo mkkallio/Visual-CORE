@@ -8,100 +8,85 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
 integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
 crossorigin=""/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
 
 </head>
 <body>
+<div class="container">
 <!-- Navigation Sidebar -->
 <div class="sidenavL">
-    <a href="#">Inputs</a>
-    <a href="#">Outputs</a>
-    <a href="about.html">About</a>
-    <a href="help.html">Help</a>
+    <div id="navigation">
+        <a class="fas fa-info-circle" href="about.html"></a>
+        <a class="fas fa-question-circle" href="help.html"></a>
+    </div>
+        <a>Inputs</a>
+    <div id="kayinInputs">
+        <a>Population</a>
+        <input type="number" placeholder="Population...">
+    </div>
+    <div id="villageInputs">
+        <a>Population</a>
+        <input type="number" id="vpop">
+    </div>
+    <div id="townshipInputs">
+        <a>Population</a>
+        <input type="number" id="tpop">
+    </div>
+    <div id="basinInputs">
+        <a>Waterflow</a>
+        <input id="bflow" type="number">
+    </div>
+    <div id="riverInputs">
+        <a>Waterflow</a>
+        <input id="rflow" type="number">
+    </div>
 </div>
 
 <!-- Map Section -->
 <div id="mapSection">
     <div id="map"></div>
-</div>
-
-<footer>
-    <p>Footer placeholder.</p>
-</footer>
-
-<div class="sidenavR">
-        <div class="container">
-                <div class="box">
-                    <img src="img/test.jpg">
-                    <h3>Placeholder information box</h3>
-                    <p>Placeholder information</p>
-                </div>
-                <div class="box">
-                    <img src="img/test.jpg">
-                    <h3>Placeholder information box</h3>
-                    <p>Placeholder information</p>
-                </div>
-                <div class="box">
-                    <img src="img/test.jpg">
-                    <h3>Placeholder information box</h3>
-                    <p>Placeholder information</p>
-                </div>
-                <div class="box">
-                    <img src="img/test.jpg">
-                    <h3>Placeholder information box</h3>
-                    <p>Placeholder information</p>
-                </div>
-                <div class="box">
-                    <img src="img/test.jpg">
-                    <h3>Placeholder information box</h3>
-                    <p>Placeholder information</p>
-                </div>
-                <div class="box">
-                    <img src="img/test.jpg">
-                    <h3>Placeholder information box</h3>
-                    <p>Placeholder information</p>
-                </div>
-        </div>
-</div>
-
-
-<!-- Info / Results Section-->
-<!--<section id="boxes">
-    <div class="container">
-        <div class="box">
-            <img src="img/test.jpg">
-            <h3>Placeholder information box</h3>
-            <p>Placeholder information</p>
-        </div>
-        <div class="box">
-            <img src="img/test.jpg">
-            <h3>Placeholder information box</h3>
-            <p>Placeholder information</p>
-        </div>
-        <div class="box">
-            <img src="img/test.jpg">
-            <h3>Placeholder information box</h3>
-            <p>Placeholder information</p>
-        </div>
-        <div class="box">
-            <img src="img/test.jpg">
-            <h3>Placeholder information box</h3>
-            <p>Placeholder information</p>
-        </div>
-        <div class="box">
-            <img src="img/test.jpg">
-            <h3>Placeholder information box</h3>
-            <p>Placeholder information</p>
-        </div>
-        <div class="box">
-            <img src="img/test.jpg">
-            <h3>Placeholder information box</h3>
-            <p>Placeholder information</p>
-        </div>
+    <div id="console">
+        <p id="content">Click a layer / river to display some information.</p>
     </div>
-</section> -->
-<!-- Footer -->
+</div>
+<div class="sidenavR">
+    <div class="container">
+            <div class="box">
+                <img src="img/test.jpg">
+                <h3>Placeholder information box</h3>
+                <p>Placeholder information</p>
+            </div>
+            <div class="box">
+                <img src="img/test.jpg">
+                <h3>Placeholder information box</h3>
+                <p>Placeholder information</p>
+            </div>
+            <div class="box">
+                <img src="img/test.jpg">
+                <h3>Placeholder information box</h3>
+                <p>Placeholder information</p>
+            </div>
+            <div class="box">
+                <img src="img/test.jpg">
+                <h3>Placeholder information box</h3>
+                <p>Placeholder information</p>
+            </div>
+            <div class="box">
+                <img src="img/test.jpg">
+                <h3>Placeholder information box</h3>
+                <p>Placeholder information</p>
+            </div>
+            <div class="box">
+                <img src="img/test.jpg">
+                <h3>Placeholder information box</h3>
+                <p>Placeholder information</p>
+            </div>
+    </div>
+</div>
+</div>
 
-
+<script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
 integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
 crossorigin=""></script>

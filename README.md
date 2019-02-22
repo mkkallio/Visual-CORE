@@ -16,4 +16,4 @@ Install Npm, open terminal and type: "npm install".
 Install OpenCPU, open terminal and type: "npm install opencpu".
 Install Leaflet, open termial and type: "npm install leaflet".
 Install Leaflet.glify plugin, open terminal and type: "npm install leaflet.glify".
-Install ESLint, open terminal and type: "npm install eslint".
+Install D3.js, open terminal and type: "npm install d3".

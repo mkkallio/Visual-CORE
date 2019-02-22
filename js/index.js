@@ -15,62 +15,101 @@ id: 'mapbox.streets',
 accessToken: 'pk.eyJ1IjoibWthbGxpbzIiLCJhIjoiY2pyN3Fha2hyMDBxNzN4cW5sYm12MWkwbyJ9.q1pVLHFRx0Cav6vmyACAYw'
 });
 
-/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-function openNav() {
-document.getElementById("navSidebar").style.width = "250px";
-document.getElementById("main").style.marginLeft = "250px";
-document.getElementById("mapSection").style.marginLeft = "250px";
+function vInput(name) {
+  document.getElementById("villageInputs").style.display = "block";
+  document.getElementById("vpop").value = "";
+  document.getElementById("vpop").placeholder ="Population of "+name;
+  document.getElementById("kayinInputs").style.display = "none";
+  document.getElementById("basinInputs").style.display = "none";
+  document.getElementById("riverInputs").style.display = "none";
 }
 
-/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-function closeNav() {
-document.getElementById("navSidebar").style.width = "0";
-document.getElementById("main").style.marginLeft = "0";
+function kInput(){
+  document.getElementById("villageInputs").style.display = "none";
+  document.getElementById("townshipInputs").style.display = "none";
+  document.getElementById("kayinInputs").style.display = "block";
+  document.getElementById("basinInputs").style.display = "none";
+  document.getElementById("riverInputs").style.display = "none";
 }
+
+function tInput(name){
+  document.getElementById("villageInputs").style.display = "none";
+  document.getElementById("kayinInputs").style.display = "none";
+  document.getElementById("townshipInputs").style.display = "block";
+  document.getElementById("tpop").value = "";
+  document.getElementById("tpop").placeholder ="Population of "+name;
+  document.getElementById("basinInputs").style.display = "none";
+  document.getElementById("riverInputs").style.display = "none";
+}
+
+function bInput(id){
+  document.getElementById("villageInputs").style.display = "none";
+  document.getElementById("kayinInputs").style.display = "none";
+  document.getElementById("townshipInputs").style.display = "none";
+  document.getElementById("riverInputs").style.display = "none";
+  document.getElementById("bflow").value = "";
+  document.getElementById("bflow").placeholder ="Total waterflow of the basin. Selected Basin HYBAS_ID: "+id;
+  document.getElementById("basinInputs").style.display = "block";
+}
+
+function rInput(id){
+  document.getElementById("villageInputs").style.display = "none";
+  document.getElementById("kayinInputs").style.display = "none";
+  document.getElementById("townshipInputs").style.display = "none";
+  document.getElementById("riverInputs").style.display = "block";
+  document.getElementById("rflow").value = "";
+  document.getElementById("rflow").placeholder ="Waterflow average of River segment "+id;
+  document.getElementById("basinInputs").style.display = "none";
+}
+
+//Calls kayinState function when the layer is clicked.
+var kayinLayer = new L.geoJson(Kayin, {
+  onEachFeature: function (feature, layer){
+    layer.on('click', function (e){
+      document.getElementById("content").innerHTML = e.target.feature.properties.NAME_1 + ", " +e.target.feature.properties.NAME_0;
+      kInput();
+  })}
+});
+
+var kayin_villagesLayer = new L.GeoJSON(Kayin_villages, {
+  onEachFeature: function(feature, layer) {
+    layer.on('click', function (e){
+    document.getElementById("content").innerHTML = "Village of " +e.target.feature.properties.NAME_3;
+    console.log(e.target.feature.properties.NAME_3);
+    vInput(e.target.feature.properties.NAME_3);
+  })}
+});      
+
+var kayin_townshipsLayer = new L.GeoJSON(Kayin_townships, {
+  onEachFeature: function(feature, layer){
+    layer.on('click', function (e){
+      document.getElementById("content").innerHTML = "Township of " +e.target.feature.properties.VARNAME_2;
+      console.log(e.target.feature.properties.VARNAME_2);
+      tInput(e.target.feature.properties.VARNAME_2);
+    })}
+  });     
+
+var kayin_basinsLayer = new L.GeoJSON(kayin_basins, {
+  onEachFeature: function(feature, layer){
+    layer.on('click', function (e){
+      document.getElementById("content").innerHTML = "Basin HYBAS ID: "+e.target.feature.properties.HYBAS_ID;
+      console.log(e.target.feature.properties.HYBAS_ID);
+      bInput(e.target.feature.properties.HYBAS_ID);
+    })}
+  });
+
+var riversLayer = new L.GeoJSON(rivers, {
+  onEachFeature: function(feature,layer){
+    layer.on('click', function (e){
+      document.getElementById("content").innerHTML = "River Reach id: "+e.target.feature.properties.Reach_ID;
+      rInput(e.target.feature.properties.Reach_ID);
+    })}
+});
 
 // Displays an popup on the map.
 function kayinState (feature,layer){
   layer.bindPopup("<h1> Kayin State </h1> <p> You clicked an area inside of Kayin State </p>");
 };
-//Villages popup
-function kayinVillages (feature,layer){
-  layer.bindPopup("<h1> Village of "+feature.properties.NAME_3+". </h1>");
-};
-//Township popup
-function kayinTownship (feature,layer){
-  layer.bindPopup("<h1> Tonwship: "+feature.properties.VARNAME_2+". </h1>");
-};
-//Basin popup
-function kayinBasin (feature,layer){
-  layer.bindPopup("<h1> Basin </h1>");
-};
-
-//rivers popup
-function krivers (feature,layer){
-layer.bindPopup("<h1> Here's a river </h1>");
-};
-
-
-//Calls kayinState function when the layer is clicked.
-var kayinLayer = new L.geoJson(Kayin, {
-  onEachFeature: kayinState
-  });
-
-var kayin_villagesLayer = new L.GeoJSON(Kayin_villages, {
-  onEachFeature: kayinVillages
-  });      
-
-var kayin_townshipsLayer = new L.GeoJSON(Kayin_townships, {
-  onEachFeature: kayinTownship
-  });     
-
-var kayin_basinsLayer = new L.GeoJSON(kayin_basins, {
-  onEachFeature: kayinBasin
-  });
-
-var riversLayer = new L.GeoJSON(rivers, {
-  onEachFeature: krivers
-  });
 
 var baseMaps = {
 "Satellite": satellite,
@@ -94,3 +133,4 @@ var map = L.map('map', {
 });
 
 L.control.layers(baseMaps, overlayMaps).addTo(map);
+

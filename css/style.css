@@ -8,6 +8,7 @@ body{
     margin:0;
     background-color:#f4f4f4;
     height:100%;
+    width:100%;
 }
 
 /* Global styling */
@@ -15,20 +16,37 @@ body{
 /* The sidebar menu */
 .sidenavL {
     height: 100%;
-    width: 20%;
+    width: 25%;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     background-color: #323451;
-    overflow-x: hidden;
     padding-top: 20px;
+    overflow: auto;
 }
 
+#navigation{
+    text-align: center;
+}
+
+.sidenavL  #navigation a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 30px;
+    color: white;
+    display: inline-block;
+}
+.sidenavL input{
+    width:90%;
+    text-align: center;
+    display: inline-block;
+}
 .sidenavL a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 25px;
+    text-align: center;
+    font-size: 15px;
     color: white;
     display: block;
 }
@@ -37,32 +55,69 @@ body{
     color: #f1f1f1;
 }
 
+#kayinInputs{
+    display: none;
+}
+
+#villageInputs{
+    display: none;
+}
+
+#townshipInputs{
+    display: none;
+}
+
+#basinInputs{
+    display: none;
+}
+
+#riverInputs{
+    display: none;
+}
+
 .sidenavR {
     height: 100%;
-    width: 20%;
+    width: 25%;
     position: fixed;
     z-index: 1;
     top: 0;
     right: 0;
     background-color: #323451;
-    overflow-x: hidden;
+    overflow: auto;
     padding-top: 20px;
 }
 
-.sidenavR a {
+.sidenavR .container {
+    height: 100%;
+    width: 25%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #323451;
+    overflow: auto;
+    padding-top: 20px;
+}
+
+.sidenavR h3 {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     color: white;
     display: block;
 }
 
-.sidenavR a:hover {
-    color: #f1f1f1;
+.sidenavR p {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    display: block;
 }
 
 .container{
-    width:80%;
+    width:100%;
+    height:100%;
     margin:auto;
     overflow: hidden;
 }
@@ -123,10 +178,9 @@ header a:hover{
 
 /* Map Section */
 #mapSection {
-    position: absolute;
-    width:60%;
-    height:70%;
-    margin-left: 20%;
+    position: relative;
+    width:50%;
+    height:100%;
 }
 
 #mapSection h1{
@@ -134,22 +188,27 @@ header a:hover{
 }
 
 #map {
-    height:100%;
+    height:70%;
+    width:100%;
+}
+
+#content{
+    text-align: center;
 }
 
 
 /* Info / Results */
 .box{
-    float:left;
+    display: block;
     text-align: center;
     width:100%;
-    padding:10px;
+    padding:5px;
 }
 
 /* About */
 article#mainArticle{
     float:left;
-    width:65%;
+    width:55%;
 }
 
 article h1{
@@ -158,7 +217,7 @@ article h1{
 
 aside#sidebar{
     float:right;
-    width:30%;
+    width:20%;
     margin-top:10px;
 }
 
@@ -166,7 +225,7 @@ aside#sidebar{
 
 article#helpArticle{
     float:left;
-    width: 100%;
+    width: 75%;
 }
 
 ul#helpSteps li{
@@ -199,7 +258,7 @@ footer{
 @media only screen and (max-width: 600px) {
     #mapSection{
         height:300px;
-        width:80%;
+        width:100%;
         margin:auto;
         overflow:hidden;
     }
@@ -219,7 +278,7 @@ footer{
 @media only screen and (min-width: 768px) {
     #mapSection{
         height:400px;
-        width:80%;
+        width:50%;
         margin:auto;
         overflow:hidden;
     }
@@ -228,8 +287,8 @@ footer{
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     #mapSection{
-        height:450px;
-        width:80%;
+        height:800px;
+        width:50%;
         margin:auto;
         overflow:hidden;
     }
@@ -238,8 +297,8 @@ footer{
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     #mapSection{
-        height:500px;
-        width:80%;
+        height: 700px;
+        width:50%;
         margin:auto;
         overflow:hidden;
     }
