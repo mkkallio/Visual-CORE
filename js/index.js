@@ -2,22 +2,101 @@
 
 //Variables
 
+// Demand variables.
 var kwh_hh = document.getElementById("hh_kwh").value;
 var kwh_person = document.getElementById("person_kwh").value;
+var totalPdemand;
+var totalHHdemand;
+var totalPublicDemand = 200;
+var totalProductiveDemand = 500;
 var lastVillage;
 
-var satellite = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+// Basemap options
+var satellite = L.tileLayer.provider('MapBox', {
 maxZoom: 18,
 id: 'mapbox.satellite',
 accessToken: 'pk.eyJ1IjoibWthbGxpbzIiLCJhIjoiY2pyN3Fha2hyMDBxNzN4cW5sYm12MWkwbyJ9.q1pVLHFRx0Cav6vmyACAYw'
 }),
-streets = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+streets = L.tileLayer.provider('MapBox', {
 maxZoom: 18,
 id: 'mapbox.streets',
 accessToken: 'pk.eyJ1IjoibWthbGxpbzIiLCJhIjoiY2pyN3Fha2hyMDBxNzN4cW5sYm12MWkwbyJ9.q1pVLHFRx0Cav6vmyACAYw'
+}),
+mapnik = L.tileLayer.provider('OpenStreetMap',{
+  maxZoom: 18,
+}),
+topomap = L.tileLayer.provider('OpenTopoMap',{
+  maxZoom: 18
 });
+
+/* Graphs */
+// set the dimensions and margins of the graph
+var margin = {top: 5, right: 10, bottom: 20, left: 50},
+    width = 300 - margin.left - margin.right,
+    height = 150 - margin.top - margin.bottom;
+
+
+
+function drawLoadProfile(data) {
+
+  d3.select("#temp").remove();
+  var svg = d3.select("#box")
+  .append("svg")
+    .attr("id", "temp")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+  // Add X axis --> it is a date format
+  var x = d3.scaleLinear()
+    //.domain(d3.max(data, function(d) { return d.Time; }))
+    .domain([0, d3.max(data, function(d) { return +d.hour; })])
+  .range([ 0, width ]);
+  svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+
+  // Add Y axis
+
+    var y = d3.scaleLinear()
+    .domain([0, d3.max(data, function(d) { return +d.households*totalHHdemand, +d.public_utilities*totalPublicDemand, +d.productive_uses*totalProductiveDemand; })])
+    .range([ height, 0 ]);
+    svg.append("g")
+    .call(d3.axisLeft(y));
+  // Add the line
+  svg.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "#2eb2ff")
+    .attr("stroke-width", 1.5)
+    .attr("d", d3.line()
+      .x(function(d) { return x(d.hour) })
+      .y(function(d) { return y(d.households*totalHHdemand) })
+      )
+// Add the line
+  svg.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "#323451")
+    .attr("stroke-width", 1.5)
+    .attr("d", d3.line()
+      .x(function(d) { return x(d.hour) })
+      .y(function(d) { return y(d.public_utilities*totalPublicDemand) })
+      )
+// Add the line
+  svg.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "#e05a47")
+    .attr("stroke-width", 1.5)
+    .attr("d", d3.line()
+      .x(function(d) { return x(d.hour) })
+      .y(function(d) { return y(d.productive_uses*totalProductiveDemand) })
+      )
+
+}
+
 
 /* Electricity demand functions */
 // Per household
@@ -27,13 +106,13 @@ function demand(){
   var tempPop = document.getElementById("vpop").value;
   var tempHouseholds = document.getElementById("households").value;
 
-  var hhResult = tempHh * tempHouseholds;
-  var personResult = tempPerson * tempPop;
+  totalHHdemand = tempHh * tempHouseholds;
+  totalPdemand = tempPerson * tempPop;
 
   document.getElementById("content").innerHTML = "Village name: " + lastVillage.feature.properties.Village +"<br>\ Population: " + lastVillage.feature.properties.Village_Po + "<br>\
       State: "+ lastVillage.feature.properties.State + "<br>\ District: " + lastVillage.feature.properties.District + "<br>\ Township: " + lastVillage.feature.properties.Township + "<br>\
-      Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Number of households: " + lastVillage.feature.properties.Village_HH + "<br>\ Total household kWh demand: " + hhResult +
-      " kWh <br>\ Total population kWh demand: " + personResult + " kWh";
+      Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Number of households: " + lastVillage.feature.properties.Village_HH + "<br>\ Total household kWh demand: " + totalHHdemand +
+      " kWh <br>\ Total population kWh demand: " + totalPdemand + " kWh";
 
 }
 
@@ -76,6 +155,11 @@ function hideInputs(){
 /* Map interactivity for each layer. */
 
 var districtLayer = new L.geoJson(districts, {
+  style: {
+    stroke: 1,
+    fillOpacity: 0,
+    color: "black"
+  },
   onEachFeature: function (feature, layer){
     layer.on('click', function (e){
       document.getElementById("content").innerHTML = e.target.feature.properties.NAME_2 + ", " + e.target.feature.properties.NAME_0;
@@ -125,13 +209,17 @@ var villagePoints = new L.GeoJSON (village_points, {
       lastVillage = e.target;
       vInput(lastVillage.feature.properties.Village, lastVillage.feature.properties.Village_Po, lastVillage.feature.properties.Village_HH);
       demand();
+      d3.select("#temp").empty();
+      drawLoadProfile(load_profiles);
     })}
 });
 
-// Map types, satellite or street view.
+// Basemaps: satellite or street view.
 var baseMaps = {
 "Satellite": satellite,
-"Streets": streets
+"Streets": streets,
+"OSM.mapnik" : mapnik,
+"TopoMap" : topomap
 };
 
 // Initializing the map
@@ -215,3 +303,4 @@ map.on('zoom', function(e) {
   map.redraw();
 }); */
 
+console.log(load_profiles);
