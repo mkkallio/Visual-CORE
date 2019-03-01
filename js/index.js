@@ -133,7 +133,7 @@ function demand(){
 
   document.getElementById("content").innerHTML = "Village name: " + lastVillage.feature.properties.Village +"<br>\ Population: " + lastVillage.feature.properties.Village_Po + "<br>\
       State: "+ lastVillage.feature.properties.State + "<br>\ District: " + lastVillage.feature.properties.District + "<br>\ Township: " + lastVillage.feature.properties.Township + "<br>\
-      Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Number of households: " + lastVillage.feature.properties.tempHouseholds + "<br>\ Total household kWh demand: " + totalHHdemand +
+      Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Number of households: " + tempHouseholds + "<br>\ Total household kWh demand: " + totalHHdemand +
       " kWh <br>\ Total population kWh demand: " + totalPdemand + " kWh";
 
 }
@@ -330,5 +330,3 @@ map.on('zoom', function(e) {
   });
   map.redraw();
 }); */
-
-console.log(load_profiles);
