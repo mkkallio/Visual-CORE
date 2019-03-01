@@ -27,7 +27,8 @@ function drawLoadProfile(data, demand) {
               "translate(" + (width/2) + " ," + 
                              (height + margin.top + 20) + ")")
         .style("text-anchor", "middle")
-        .text("hour");
+        .style("font-size", "10px")
+        .text("ending hour");
   
     // Add Y axis
   
@@ -37,8 +38,9 @@ function drawLoadProfile(data, demand) {
       .range([ height, 0 ]);
       svg.append("g")
       .call(d3.axisLeft(y));
-    // Add the line
-    svg.append("path")
+    // Add household line
+    var householdLine = 
+      svg.append("path")
       .datum(data)
       .attr("fill", "none")
       .attr("stroke", "#2eb2ff")
@@ -52,10 +54,12 @@ function drawLoadProfile(data, demand) {
       .attr("x",0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("kWh"); 
+      .style("font-size", "10px")
+      .text("Demand (kWh)"); 
   
   // Add the line
-    svg.append("path")
+    var publicline = 
+      svg.append("path")
       .datum(data)
       .attr("fill", "none")
       .attr("stroke", "#f8c972")
@@ -64,6 +68,7 @@ function drawLoadProfile(data, demand) {
         .x(function(d) { return x(d.hour) })
         .y(function(d) { return y(d.public_utilities*totalPublicDemand) }))
   // Add the line
+    var productivityline =
     svg.append("path")
       .datum(data)
       .attr("fill", "none")
@@ -74,6 +79,7 @@ function drawLoadProfile(data, demand) {
         .y(function(d) { return y(d.productive_uses*totalProductiveDemand) }))
   
   // Add the line
+    var totalline =
     svg.append("path")
       .datum(data)
       .attr("fill", "none")
@@ -82,5 +88,5 @@ function drawLoadProfile(data, demand) {
       .attr("d", d3.line()
         .x(function(d) { return x(d.hour) })
         .y(function(d) { return y(d.productive_uses*totalProductiveDemand + d.public_utilities*totalPublicDemand + d.households*totalHHdemand) }))
-        
+
   }

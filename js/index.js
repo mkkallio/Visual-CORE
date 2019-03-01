@@ -89,9 +89,9 @@ householdNro.oninput = function(e){
   drawLoadProfile(load_profiles,totalHHdemand);
 }
 
-personSlider.oninput = function() {
+personSlider.oninput = function(e) {
   personOutput.innerHTML = this.value;
-  demand();
+  demand(e);
 }
 
 /* Scaling markers ToDo
