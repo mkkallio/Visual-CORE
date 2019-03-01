@@ -5,6 +5,7 @@
 // Demand variables.
 var kwh_hh = document.getElementById("hh_kwh").value;
 var kwh_person = document.getElementById("person_kwh").value;
+var householdNro = document.getElementById("households")
 var totalPdemand;
 var totalHHdemand;
 var totalPublicDemand = 200;
@@ -31,9 +32,9 @@ topomap = L.tileLayer.provider('OpenTopoMap',{
 
 /* Graphs */
 // set the dimensions and margins of the graph
-var margin = {top: 5, right: 10, bottom: 20, left: 50},
-    width = 300 - margin.left - margin.right,
-    height = 150 - margin.top - margin.bottom;
+var margin = {top: 5, right: 10, bottom: 35, left: 50},
+    width = 320 - margin.left - margin.right,
+    height = 200 - margin.top - margin.bottom;
 
 
 
@@ -56,11 +57,25 @@ function drawLoadProfile(data) {
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
+    svg.append("text")             
+      .attr("transform",
+            "translate(" + (width/2) + " ," + 
+                           (height + margin.top + 20) + ")")
+      .style("text-anchor", "middle")
+      .text("hour");
 
   // Add Y axis
 
     var y = d3.scaleLinear()
-    .domain([0, d3.max(data, function(d) { return +d.households*totalHHdemand, +d.public_utilities*totalPublicDemand, +d.productive_uses*totalProductiveDemand; })])
+    .domain([0, d3.max(data, function(d) { 
+      var var1 = d.households*totalHHdemand;
+      var var2 = d.public_utilities*totalPublicDemand;
+      var var3 = d.productive_uses*totalProductiveDemand;
+      var var1max = Math.max(var1);
+      var var2max = Math.max(var2);
+      var var3max = Math.max(var3);
+      var maxim = Math.max(var1max,var2max,var3max)
+      return maxim+2; })])
     .range([ height, 0 ]);
     svg.append("g")
     .call(d3.axisLeft(y));
@@ -72,8 +87,15 @@ function drawLoadProfile(data) {
     .attr("stroke-width", 1.5)
     .attr("d", d3.line()
       .x(function(d) { return x(d.hour) })
-      .y(function(d) { return y(d.households*totalHHdemand) })
-      )
+      .y(function(d) { return y(d.households*totalHHdemand) }))
+    svg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x",0 - (height / 2))
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("kWh"); 
+
 // Add the line
   svg.append("path")
     .datum(data)
@@ -111,7 +133,7 @@ function demand(){
 
   document.getElementById("content").innerHTML = "Village name: " + lastVillage.feature.properties.Village +"<br>\ Population: " + lastVillage.feature.properties.Village_Po + "<br>\
       State: "+ lastVillage.feature.properties.State + "<br>\ District: " + lastVillage.feature.properties.District + "<br>\ Township: " + lastVillage.feature.properties.Township + "<br>\
-      Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Number of households: " + lastVillage.feature.properties.Village_HH + "<br>\ Total household kWh demand: " + totalHHdemand +
+      Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Number of households: " + lastVillage.feature.properties.tempHouseholds + "<br>\ Total household kWh demand: " + totalHHdemand +
       " kWh <br>\ Total population kWh demand: " + totalPdemand + " kWh";
 
 }
@@ -255,6 +277,12 @@ personOutput.innerHTML = personSlider.value; // Display the default slider value
 hhSlider.oninput = function(e) {
   hhOutput.innerHTML = this.value;
   demand(e);
+  drawLoadProfile(load_profiles);
+}
+
+householdNro.oninput = function(e){
+  demand(e);
+  drawLoadProfile(load_profiles);
 }
 
 personSlider.oninput = function() {
