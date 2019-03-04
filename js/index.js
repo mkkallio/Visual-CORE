@@ -7,8 +7,8 @@ var kwh_hh = document.getElementById("hh_kwh").value;
 var kwh_person = document.getElementById("person_kwh").value;
 var householdNro = document.getElementById("households");
 var popNro = document.getElementById("vpop");
-var totalPublicDemand = document.getElementById("public_kwh").value;
-var totalProductiveDemand = document.getElementById("productive_kwh").value;
+//var totalPublicDemand = document.getElementById("public_kwh").value;
+//var totalProductiveDemand = document.getElementById("productive_kwh").value;
 var totalPdemand;
 var totalHHdemand;
 var lastVillage;
@@ -19,21 +19,6 @@ var margin = {top: 5, right: 10, bottom: 35, left: 50},
     width = 320 - margin.left - margin.right,
     height = 200 - margin.top - margin.bottom;
 
-/* Electricity demand functions */
-// Per household
-function demand(){
-  var tempHh = document.getElementById("hh_kwh").value;
-  var tempPerson = document.getElementById("person_kwh").value;
-  var tempPop = document.getElementById("vpop").value;
-  var tempHouseholds = document.getElementById("households").value;
-
-  totalHHdemand = tempHh * tempHouseholds;
-  totalPdemand = tempPerson * tempPop;
-
-  document.getElementById("content").innerHTML = "Village name: " + lastVillage.feature.properties.Village +"<br>\ State: "+ lastVillage.feature.properties.State + ", District: " + lastVillage.feature.properties.District + "<br>\ "+
-      " Township: " + lastVillage.feature.properties.Township + ", Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Population: " + lastVillage.feature.properties.Village_Po + ", Number of households: " + tempHouseholds + "<br>\ " + 
-      " Total household kWh demand: " + totalHHdemand +" kWh, Total population kWh demand: " + totalPdemand + " kWh";
-}
 
 /* Input functions displays inputfields specific to a map layer clicked. */
 function vInput(name, population, households) {
@@ -87,11 +72,15 @@ hhSlider.oninput = function(e) {
   hhOutput.innerHTML = this.value;
   demand(e);
   drawLoadProfile( load_profiles, totalHHdemand);
+  drawTotalDemand( totalHHdemand );
 }
 
 householdNro.oninput = function(e){
   demand(e);
   drawLoadProfile(load_profiles,totalHHdemand);
+  var demandPU = document.getElementById("public_kwh").value;
+  var demandPrUs = document.getElementById("productive_kwh").value;
+  drawTotalDemand( totalHHdemand );
 }
 
 popNro.oninput = function(e){
@@ -107,12 +96,33 @@ publicSlider.oninput = function(e) {
   publicOutput.innerHTML = this.value;
   demand(e);
   drawLoadProfile(load_profiles,totalHHdemand);
+  drawTotalDemand( totalHHdemand );
 }
 
 productiveSlider.oninput = function(e) {
   productiveOutput.innerHTML = this.value;
   demand(e);
   drawLoadProfile(load_profiles,totalHHdemand);
+  drawTotalDemand( totalHHdemand );
+}
+
+/* Electricity demand functions */
+// Per household
+function demand(){
+  var tempHh = document.getElementById("hh_kwh").value;
+  var tempPerson = document.getElementById("person_kwh").value;
+  var tempPop = document.getElementById("vpop").value;
+  var tempHouseholds = document.getElementById("households").value;
+  var grandTotal = totalHHdemand + parseFloat(publicSlider.value) + parseFloat(productiveSlider.value);
+
+  totalHHdemand = tempHh * tempHouseholds;
+  totalPdemand = tempPerson * tempPop;
+
+  document.getElementById("content").innerHTML = "Village name: " + lastVillage.feature.properties.Village +"<br>\ State: "+ lastVillage.feature.properties.State + ", District: " + lastVillage.feature.properties.District + "<br>\ "+
+      " Township: " + lastVillage.feature.properties.Township + ", Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Population: " + lastVillage.feature.properties.Village_Po + ", Number of households: " + tempHouseholds + "<br>\ " + 
+      " Total household kWh demand: " + totalHHdemand + " kWh, Total population kWh demand: " + totalPdemand + " kWh <br>\ " +
+      " Total public utilities usage: " + publicSlider.value + "kWh , Total productive usage: " + productiveSlider.value + " kWh <br>\ " + 
+      " Total usage (households, public utilities and productive usage): " + grandTotal + " kWh.";
 }
 
 /* Scaling markers ToDo

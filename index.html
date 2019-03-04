@@ -39,12 +39,12 @@ crossorigin=""/>
         <h3>Public utilities</h3>
         <div class="slidecontainer">
             <input type="range" min="0" max="1000" value="200" step="0.5" class="slider" id="public_kwh">
-            <a><span id="publicValue"></span> kWh usage by public utilities</a>
+            <a><span id="publicValue"></span> kWh total public utilities usage</a>
         </div>
         <h3>Productive uses</h3>
         <div class="slidecontainer">
             <input type="range" min="0" max="1500" value="500" step="0.5" class="slider" id="productive_kwh">
-            <a><span id="productiveValue"></span> kWh of productive usage</a>
+            <a><span id="productiveValue"></span> kWh total productive usage</a>
         </div>
     </div>
     <div id="townshipInputs">
@@ -68,14 +68,10 @@ crossorigin=""/>
 </div>
 <div class="sidenavR">
     <div class="container">
-            <div id="box">
+            <div id="boxLP">
             </div>
-            <!--
-            <div class="box">
-                <img src="img/test.jpg">
-                <h3>Placeholder information box</h3>
-                <p>Placeholder information</p>
-            </div>-->
+            <div id="boxTD">
+            </div>
     </div>
 </div>
 </div>
@@ -83,6 +79,8 @@ crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
 integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
 crossorigin=""></script>
+<script src="js/jquery-3.3.1.min.js"></script> 
+<script src="js/opencpu-0.4.js"></script>
 <script src="https://d3js.org/d3.v5.js"></script>
 <script src="js/leaflet-providers.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -94,6 +92,7 @@ crossorigin=""></script>
 <script src="data/load_profiles.js" type="text/javascript"></script>
 <script src="js/index.js"></script>
 <script src="js/drawLoadProfile.js"></script>
+<script src="js/drawTotalDemand.js"></script>
 <script src="js/map.js"></script>
 </body>
 </html>

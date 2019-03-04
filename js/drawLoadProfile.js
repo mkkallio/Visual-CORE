@@ -93,6 +93,6 @@ function drawLoadProfile(data, demandHH){
             y: -0.1
           },
       };
-      Plotly.newPlot('box', graphData, layout, {displayModeBar: false});
+      Plotly.newPlot('boxLP', graphData, layout, {displayModeBar: false});
 }
 

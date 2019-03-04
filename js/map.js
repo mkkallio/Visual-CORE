@@ -81,6 +81,7 @@ onEachFeature: function (feature, layer){
     d3.select("#temp").empty();
     totalHHdemand = lastVillage.feature.properties.Village_HH * document.getElementById("hh_kwh").value;
     drawLoadProfile(load_profiles,totalHHdemand);
+    drawTotalDemand(totalHHdemand);
     })}
 });
 
