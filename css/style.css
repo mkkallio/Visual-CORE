@@ -42,7 +42,7 @@ body{
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
     color: black;
     display: block;
 }
@@ -51,21 +51,27 @@ body{
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     text-align: center;
-    font-size: 20px;
+    font-size: 15px;
     color: black;
     display: block;
 }
 
 .sidenavL input{
-    width:90%;
+    width:95%;
     text-align: center;
 }
 .sidenavL a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     text-align: center;
-    font-size: 15px;
+    font-size: 10px;
     color: black;
+    display: block;
+}
+
+.sidenav span{
+    font-size: 10px;
+    text-align: center;
     display: block;
 }
 
@@ -147,12 +153,13 @@ body{
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 100%; /* Full-width */
-    height: 25px; /* Specified height */
+    height: 15px; /* Specified height */
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
+    padding-left: 5px;
   }
   
   /* Mouse-over effects */
@@ -164,15 +171,15 @@ body{
   .slider::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
     appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
+    width: 20px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
     background: #4CAF50; /* Green background */
     cursor: pointer; /* Cursor on hover */
   }
   
   .slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
+    width: 20px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
     background: #4CAF50; /* Green background */
     cursor: pointer; /* Cursor on hover */
   }

@@ -5,11 +5,11 @@
 // Demand variables.
 var kwh_hh = document.getElementById("hh_kwh").value;
 var kwh_person = document.getElementById("person_kwh").value;
-var householdNro = document.getElementById("households")
+var householdNro = document.getElementById("households");
+var totalPublicDemand = document.getElementById("public_kwh").value;
+var totalProductiveDemand = document.getElementById("productive_kwh").value;
 var totalPdemand;
 var totalHHdemand;
-var totalPublicDemand = 200;
-var totalProductiveDemand = 500;
 var lastVillage;
 
 /* Graphs */
@@ -74,8 +74,14 @@ var hhSlider = document.getElementById("hh_kwh");
 var hhOutput = document.getElementById("hhValue");
 var personSlider = document.getElementById("person_kwh");
 var personOutput = document.getElementById("personValue");
-hhOutput.innerHTML = hhSlider.value; // Display the default slider value
-personOutput.innerHTML = personSlider.value; // Display the default slider value
+var publicSlider = document.getElementById("public_kwh");
+var publicOutput = document.getElementById("publicValue");
+var productiveSlider = document.getElementById("productive_kwh");
+var productiveOutput = document.getElementById("productiveValue");
+hhOutput.innerHTML = hhSlider.value;
+personOutput.innerHTML = personSlider.value;
+publicOutput.innerHTML = publicSlider.value;
+productiveOutput.innerHTML = productiveSlider.value;
 
 // Update the current slider value (each time you drag the slider handle)
 hhSlider.oninput = function(e) {
@@ -92,6 +98,18 @@ householdNro.oninput = function(e){
 personSlider.oninput = function(e) {
   personOutput.innerHTML = this.value;
   demand(e);
+}
+
+publicSlider.oninput = function(e) {
+  publicOutput.innerHTML = this.value;
+  demand(e);
+  drawLoadProfile(load_profiles,totalHHdemand);
+}
+
+productiveSlider.oninput = function(e) {
+  productiveOutput.innerHTML = this.value;
+  demand(e);
+  drawLoadProfile(load_profiles,totalHHdemand);
 }
 
 /* Scaling markers ToDo

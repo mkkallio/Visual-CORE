@@ -29,12 +29,22 @@ crossorigin=""/>
         <h3>kWh demand by household</h3>
         <div class="slidecontainer">
             <input type="range" min="0" max="50" value="5" step="0.1" class="slider" id="hh_kwh">
-            <span id="hhValue"></span><a> kWh / household</span></a>
+            <span id="hhValue"></span><a> kWh / household</a>
         </div>
         <h3>kWh demand by person</h3>
         <div class="slidecontainer">
             <input type="range" min="0" max="10" value="0.5" step="0.1" class="slider" id="person_kwh">
-            <span id="personValue"></span><a> kWh / person</span></a>
+            <span id="personValue"></span><a> kWh / person</a>
+        </div>
+        <h3>Public utilities</h3>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="1000" value="200" step="0.5" class="slider" id="public_kwh">
+            <span id="publicValue"></span><a> kWh usage by public utilities</a>
+        </div>
+        <h3>Productive uses</h3>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="1500" value="500" step="0.5" class="slider" id="productive_kwh">
+            <span id="productiveValue"></span><a> kWh of productive usage</a>
         </div>
     </div>
     <div id="townshipInputs">
@@ -76,7 +86,6 @@ crossorigin=""></script>
 <script src="https://d3js.org/d3.v5.js"></script>
 <script src="js/leaflet-providers.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<!--<script src="js/glify.js"></script>-->
 <script src="data/city_town.geojson" type="text/javascript"></script>
 <script src="data/townships.GeoJSON" type="text/javascript"></script>
 <script src="data/districts.geojson" type="text/javascript"></script>
@@ -84,8 +93,7 @@ crossorigin=""></script>
 <script src="data/village_points.GeoJSON" type="text/javascript"></script>
 <script src="data/load_profiles.js" type="text/javascript"></script>
 <script src="js/index.js"></script>
-<!--<script src="js/drawLoadProfile.js"></script>-->
-<script src="js/plotTest.js" type="text/javascript"></script>
+<script src="js/drawLoadProfile.js"></script>
 <script src="js/map.js"></script>
 </body>
 </html>
