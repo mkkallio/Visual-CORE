@@ -48,7 +48,7 @@ body{
 }
 
 .sidenavL h3{
-    padding: 6px 8px 6px 16px;
+    padding: 1px 1px 1px 5px;
     text-decoration: none;
     text-align: center;
     font-size: 15px;
@@ -61,7 +61,7 @@ body{
     text-align: center;
 }
 .sidenavL a {
-    padding: 6px 8px 6px 16px;
+    padding: 1px 1px 1px 7px;
     text-decoration: none;
     text-align: center;
     font-size: 10px;

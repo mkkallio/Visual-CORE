@@ -6,6 +6,7 @@
 var kwh_hh = document.getElementById("hh_kwh").value;
 var kwh_person = document.getElementById("person_kwh").value;
 var householdNro = document.getElementById("households");
+var popNro = document.getElementById("vpop");
 var totalPublicDemand = document.getElementById("public_kwh").value;
 var totalProductiveDemand = document.getElementById("productive_kwh").value;
 var totalPdemand;
@@ -29,20 +30,18 @@ function demand(){
   totalHHdemand = tempHh * tempHouseholds;
   totalPdemand = tempPerson * tempPop;
 
-  document.getElementById("content").innerHTML = "Village name: " + lastVillage.feature.properties.Village +"<br>\ Population: " + lastVillage.feature.properties.Village_Po + "<br>\
-      State: "+ lastVillage.feature.properties.State + "<br>\ District: " + lastVillage.feature.properties.District + "<br>\ Township: " + lastVillage.feature.properties.Township + "<br>\
-      Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Number of households: " + tempHouseholds + "<br>\ Total household kWh demand: " + totalHHdemand +
-      " kWh <br>\ Total population kWh demand: " + totalPdemand + " kWh";
-
+  document.getElementById("content").innerHTML = "Village name: " + lastVillage.feature.properties.Village +"<br>\ State: "+ lastVillage.feature.properties.State + ", District: " + lastVillage.feature.properties.District + "<br>\ "+
+      " Township: " + lastVillage.feature.properties.Township + ", Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Population: " + lastVillage.feature.properties.Village_Po + ", Number of households: " + tempHouseholds + "<br>\ " + 
+      " Total household kWh demand: " + totalHHdemand +" kWh, Total population kWh demand: " + totalPdemand + " kWh";
 }
 
 /* Input functions displays inputfields specific to a map layer clicked. */
 function vInput(name, population, households) {
   document.getElementById("villageInputs").style.display = "block";
   document.getElementById("vpop").value = population;
-  document.getElementById("vpop").placeholder ="Population of "+name;
+  document.getElementById("vpop").placeholder = "Population of " + name;
   document.getElementById("households").value = households;
-  document.getElementById("households").placeholder ="Number of households:";
+  document.getElementById("households").placeholder = "Number of households:";
   document.getElementById("riverInputs").style.display = "none";
   document.getElementById("townshipInputs").style.display = "none";
   
@@ -52,7 +51,7 @@ function tInput(name){
   document.getElementById("villageInputs").style.display = "none";
   document.getElementById("townshipInputs").style.display = "block";
   document.getElementById("tpop").value = "";
-  document.getElementById("tpop").placeholder ="Population of "+name;
+  document.getElementById("tpop").placeholder ="Population of " + name;
   document.getElementById("riverInputs").style.display = "none";
 }
 
@@ -61,7 +60,7 @@ function rInput(id){
   document.getElementById("townshipInputs").style.display = "none";
   document.getElementById("riverInputs").style.display = "block";
   document.getElementById("rflow").value = "";
-  document.getElementById("rflow").placeholder ="Waterflow average of River segment "+id;
+  document.getElementById("rflow").placeholder ="Waterflow average of River segment " + id;
 }
 
 function hideInputs(){
@@ -87,12 +86,16 @@ productiveOutput.innerHTML = productiveSlider.value;
 hhSlider.oninput = function(e) {
   hhOutput.innerHTML = this.value;
   demand(e);
-  drawLoadProfile(load_profiles,totalHHdemand);
+  drawLoadProfile( load_profiles, totalHHdemand);
 }
 
 householdNro.oninput = function(e){
   demand(e);
   drawLoadProfile(load_profiles,totalHHdemand);
+}
+
+popNro.oninput = function(e){
+  demand(e);
 }
 
 personSlider.oninput = function(e) {
