@@ -113,10 +113,10 @@ function demand(){
   var tempPerson = document.getElementById("person_kwh").value;
   var tempPop = document.getElementById("vpop").value;
   var tempHouseholds = document.getElementById("households").value;
-  var grandTotal = totalHHdemand + parseFloat(publicSlider.value) + parseFloat(productiveSlider.value);
 
   totalHHdemand = tempHh * tempHouseholds;
   totalPdemand = tempPerson * tempPop;
+  var grandTotal = totalHHdemand + parseFloat(publicSlider.value) + parseFloat(productiveSlider.value);
 
   document.getElementById("content").innerHTML = "Village name: " + lastVillage.feature.properties.Village +"<br>\ State: "+ lastVillage.feature.properties.State + ", District: " + lastVillage.feature.properties.District + "<br>\ "+
       " Township: " + lastVillage.feature.properties.Township + ", Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Population: " + lastVillage.feature.properties.Village_Po + ", Number of households: " + tempHouseholds + "<br>\ " + 

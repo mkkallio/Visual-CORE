@@ -600,9 +600,6 @@ L.Control.Search = L.Control.extend({
     {
       if(layer.feature.properties.hasOwnProperty(propName))
       {
-				//test
-				lastVillage = _.findWhere(village_points, Name == layer.feature.properties.hasOwnProperty(propName));
-				console.log(lastVillage);
         if(layer.getLatLng && typeof layer.getLatLng === 'function') {
           loc = layer.getLatLng();
           loc.layer = layer;			
