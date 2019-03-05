@@ -9,7 +9,7 @@ function drawLoadProfile(data, demandHH){
     var demandPU = document.getElementById("public_kwh").value;
     var demandPrUs = document.getElementById("productive_kwh").value;
 
-    console.log(demandPU + " public. "+ demandPrUs + " productive.");
+    //console.log(demandPU + " public. "+ demandPrUs + " productive.");
 
     for(var i = 0; i <= 23; i++){
         households.push(data[i].households*demandHH);
@@ -18,7 +18,7 @@ function drawLoadProfile(data, demandHH){
         total.push(data[i].households*demandHH + data[i].public_utilities*demandPU + data[i].productive_uses*demandPrUs);
         hours.push(i);
     }
-    console.log(utilities);
+    //console.log(utilities);
 
     var householdTrace = {
         type : "scatter",

@@ -7,8 +7,8 @@ var kwh_hh = document.getElementById("hh_kwh").value;
 var kwh_person = document.getElementById("person_kwh").value;
 var householdNro = document.getElementById("households");
 var popNro = document.getElementById("vpop");
-//var totalPublicDemand = document.getElementById("public_kwh").value;
-//var totalProductiveDemand = document.getElementById("productive_kwh").value;
+var totalPublicDemand = document.getElementById("public_kwh").value;
+var totalProductiveDemand = document.getElementById("productive_kwh").value;
 var totalPdemand;
 var totalHHdemand;
 var lastVillage;
@@ -120,9 +120,9 @@ function demand(){
 
   document.getElementById("content").innerHTML = "Village name: " + lastVillage.feature.properties.Village +"<br>\ State: "+ lastVillage.feature.properties.State + ", District: " + lastVillage.feature.properties.District + "<br>\ "+
       " Township: " + lastVillage.feature.properties.Township + ", Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Population: " + lastVillage.feature.properties.Village_Po + ", Number of households: " + tempHouseholds + "<br>\ " + 
-      " Total household kWh demand: " + totalHHdemand + " kWh, Total population kWh demand: " + totalPdemand + " kWh <br>\ " +
+      " Total household kWh demand: " + Math.round(totalHHdemand * 10) / 10 + " kWh, Total population kWh demand: " + totalPdemand + " kWh <br>\ " +
       " Total public utilities usage: " + publicSlider.value + "kWh , Total productive usage: " + productiveSlider.value + " kWh <br>\ " + 
-      " Total usage (households, public utilities and productive usage): " + grandTotal + " kWh.";
+      " Total usage (households, public utilities and productive usage): " + Math.round(grandTotal * 10) / 10 + " kWh.";
 }
 
 /* Scaling markers ToDo

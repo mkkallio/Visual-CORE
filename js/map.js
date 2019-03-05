@@ -69,7 +69,7 @@ onEachFeature: function(feature,layer){
 });
 
 var villagePoints = new L.GeoJSON (village_points, {
-//icon: dotIcon,
+
 pointToLayer: function (feature, latlng) {
     return new L.circle(latlng, {radius: 5 });
 },
@@ -89,7 +89,7 @@ onEachFeature: function (feature, layer){
 var baseMaps = {
     "Satellite": satellite,
     "Streets": streets,
-    "OSM.mapnik" : mapnik,
+    "Mapnik" : mapnik,
     "TopoMap" : topomap
 };
 
@@ -110,6 +110,28 @@ var overlayMaps = {
     "Rivers": riversLayer,
     "Villages": villagePoints
 };
+/* Search control for villages */
+var searchControl = new L.Control.Search({
+    layer: villagePoints,
+    propertyName: 'Name',
+    circleLocation: true
+});
 
-//Adds layer control to the map.
+searchControl.on('search_locationfound', function (e) {
+    lastVillage = _.findWhere("")
+    vInput(lastVillage.feature.properties.Village, lastVillage.feature.properties.Village_Po, lastVillage.feature.properties.Village_HH);
+    demand();
+    d3.select("#temp").empty();
+    totalHHdemand = lastVillage.feature.properties.Village_HH * document.getElementById("hh_kwh").value;
+    drawLoadProfile(load_profiles,totalHHdemand);
+    drawTotalDemand(totalHHdemand);
+
+}).on('search_collapsed', function (e) {
+});
+
+//Adds layer and search control to the map.
 L.control.layers(baseMaps, overlayMaps).addTo(map);
+map.addControl(searchControl);
+
+
+

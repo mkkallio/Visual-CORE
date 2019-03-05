@@ -11,7 +11,7 @@ function drawTotalDemand(hh){
           type: 'bar',
           marker: {
             color: ['rgba(48, 178, 36, 0.96)', 'rgba(46, 178, 255, 1)', 'rgba(248, 201, 114, 1)','rgba(224, 90, 71, 1)']
-          }
+            }
         }
       ];
 
