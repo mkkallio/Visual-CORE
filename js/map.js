@@ -76,7 +76,8 @@ pointToLayer: function (feature, latlng) {
 onEachFeature: function (feature, layer){
     layer.on('click', function (e){
     lastVillage = e.target;
-    vInput(lastVillage.feature.properties.Village, lastVillage.feature.properties.Village_Po, lastVillage.feature.properties.Village_HH);
+    vInput(lastVillage);
+    showGvi();
     demand();
     d3.select("#temp").empty();
     totalHHdemand = lastVillage.feature.properties.Village_HH * document.getElementById("hh_kwh").value;
@@ -118,7 +119,6 @@ var searchControl = new L.Control.Search({
 });
 
 searchControl.on('search_locationfound', function (e) {
-    lastVillage = _.findWhere("")
     vInput(lastVillage.feature.properties.Village, lastVillage.feature.properties.Village_Po, lastVillage.feature.properties.Village_HH);
     demand();
     d3.select("#temp").empty();

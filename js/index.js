@@ -19,24 +19,27 @@ var margin = {top: 5, right: 10, bottom: 35, left: 50},
     width = 320 - margin.left - margin.right,
     height = 200 - margin.top - margin.bottom;
 
-
-/* Input functions displays inputfields specific to a map layer clicked. */
-function vInput(name, population, households) {
+/* TODO merge these Input functions into a single function */
+/* The following xInput functions hides / displays relevant elements based on feature */
+//defaults to general village info when village feature is selected
+function vInput(lastVillage) {
   document.getElementById("villageInputs").style.display = "block";
-  document.getElementById("vpop").value = population;
-  document.getElementById("vpop").placeholder = "Population of " + name;
-  document.getElementById("households").value = households;
+  document.getElementById("hhAppliances").style.display = "none";
+  document.getElementById("publicis").style.display = "none";
+  document.getElementById("productiveis").style.display = "none";
+  document.getElementById("vpop").value = lastVillage.feature.properties.Population;
+  document.getElementById("vpop").placeholder = "Population of " + lastVillage.feature.properties.Name;
+  document.getElementById("households").value = lastVillage.feature.properties.Village_HH;
   document.getElementById("households").placeholder = "Number of households:";
   document.getElementById("riverInputs").style.display = "none";
   document.getElementById("townshipInputs").style.display = "none";
-  
 }
 
 function tInput(name){
   document.getElementById("villageInputs").style.display = "none";
   document.getElementById("townshipInputs").style.display = "block";
   document.getElementById("tpop").value = "";
-  document.getElementById("tpop").placeholder ="Population of " + name;
+  document.getElementById("tpop").placeholder = "Population of " + name;
   document.getElementById("riverInputs").style.display = "none";
 }
 
@@ -52,6 +55,52 @@ function hideInputs(){
   document.getElementById("villageInputs").style.display = "none";
   document.getElementById("townshipInputs").style.display = "none";
   document.getElementById("riverInputs").style.display = "none";
+}
+/* TODO merge show functions into one...
+   Following show functions hides / displays relevant information based on nav icon clicked */
+
+function showGvi(){
+  document.getElementById("gvinav").style.display = "none";
+  document.getElementById("hhnav").style.display = "inline-block";
+  document.getElementById("publicnav").style.display = "inline-block";
+  document.getElementById("productivenav").style.display = "inline-block";
+  document.getElementById("hhAppliances").style.display = "none";
+  document.getElementById("publicis").style.display = "none";
+  document.getElementById("productiveis").style.display = "none";
+  document.getElementById("gvi").style.display = "block";
+}
+
+function showHouseholds(){
+  document.getElementById("gvinav").style.display = "inline-block";
+  document.getElementById("hhnav").style.display = "none";
+  document.getElementById("publicnav").style.display = "inline-block";
+  document.getElementById("productivenav").style.display = "inline-block";
+  document.getElementById("hhAppliances").style.display = "block";
+  document.getElementById("publicis").style.display = "none";
+  document.getElementById("productiveis").style.display = "none";
+  document.getElementById("gvi").style.display = "none";
+}
+
+function showPublic(){
+  document.getElementById("gvinav").style.display = "inline-block";
+  document.getElementById("hhnav").style.display = "inline-block";
+  document.getElementById("publicnav").style.display = "none";
+  document.getElementById("productivenav").style.display = "inline-block";
+  document.getElementById("hhAppliances").style.display = "none";
+  document.getElementById("publicis").style.display = "block";
+  document.getElementById("productiveis").style.display = "none";
+  document.getElementById("gvi").style.display = "none";
+}
+
+function showProductive(){
+  document.getElementById("gvinav").style.display = "inline-block";
+  document.getElementById("hhnav").style.display = "inline-block";
+  document.getElementById("publicnav").style.display = "inline-block";
+  document.getElementById("productivenav").style.display = "none";
+  document.getElementById("hhAppliances").style.display = "none";
+  document.getElementById("publicis").style.display = "none";
+  document.getElementById("productiveis").style.display = "block";
+  document.getElementById("gvi").style.display = "none";
 }
 
 var hhSlider = document.getElementById("hh_kwh");
@@ -70,7 +119,7 @@ productiveOutput.innerHTML = productiveSlider.value;
 // Update the current slider value (each time you drag the slider handle)
 hhSlider.oninput = function(e) {
   hhOutput.innerHTML = this.value;
-  demand(e);
+  demand();
   drawLoadProfile( load_profiles, totalHHdemand);
   drawTotalDemand( totalHHdemand );
 }
@@ -78,8 +127,6 @@ hhSlider.oninput = function(e) {
 householdNro.oninput = function(e){
   demand(e);
   drawLoadProfile(load_profiles,totalHHdemand);
-  var demandPU = document.getElementById("public_kwh").value;
-  var demandPrUs = document.getElementById("productive_kwh").value;
   drawTotalDemand( totalHHdemand );
 }
 
@@ -118,9 +165,9 @@ function demand(){
   totalPdemand = tempPerson * tempPop;
   var grandTotal = totalHHdemand + parseFloat(publicSlider.value) + parseFloat(productiveSlider.value);
 
-  document.getElementById("content").innerHTML = "Village name: " + lastVillage.feature.properties.Village +"<br>\ State: "+ lastVillage.feature.properties.State + ", District: " + lastVillage.feature.properties.District + "<br>\ "+
-      " Township: " + lastVillage.feature.properties.Township + ", Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Population: " + lastVillage.feature.properties.Village_Po + ", Number of households: " + tempHouseholds + "<br>\ " + 
-      " Total household kWh demand: " + Math.round(totalHHdemand * 10) / 10 + " kWh, Total population kWh demand: " + totalPdemand + " kWh <br>\ " +
+  document.getElementById("content").innerHTML = "Village name: " + lastVillage.feature.properties.Name +"<br>\ State: "+ lastVillage.feature.properties.State + ", District: " + lastVillage.feature.properties.District + "<br>\ "+
+      " Township: " + lastVillage.feature.properties.Township + ", Village Tract: " + lastVillage.feature.properties.VillageTra +" <br>\ Population: " + lastVillage.feature.properties.tempPop + ", Number of households: " + tempHouseholds + "<br>\ " + 
+      " Total household kWh demand: " + Math.round(totalHHdemand * 10) / 10 + " kWh, Total population kWh demand: " + Math.round(totalPdemand * 10) / 10 + " kWh <br>\ " +
       " Total public utilities usage: " + publicSlider.value + "kWh , Total productive usage: " + productiveSlider.value + " kWh <br>\ " + 
       " Total usage (households, public utilities and productive usage): " + Math.round(grandTotal * 10) / 10 + " kWh.";
 }

@@ -46,6 +46,99 @@ body{
     color: black;
     display: block;
 }
+/* Tooltips */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    top: 100%;
+    left: 50%; 
+    margin-left: -60px; /* Centers the tooltip */
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+}
+  
+/* Show the tooltip text when you mouse over the icons */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/* Switches */
+.appliances{
+    display: inline-block;
+    margin:5px 25px 10px 5px;
+    position:relative;
+}
+.appliances div{
+    display: inline-block;
+    line-height: 20px;
+}
+
+.appliances div input{
+    width: 100px;
+}
+
+ /* The switch - the box around the slider */
+.switch {
+  vertical-align: middle;
+  position: relative;
+  display: inline-block;
+  padding:0px;
+  width: 54px;
+  height: 20px;
+}
+/* Hide default HTML checkbox */
+.switch input {
+    display:none;
+}
+/* The slider */
+.switchSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(199, 61, 61);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.switchSlider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 26px;
+  left: 1px;
+  bottom: 1px;
+  background-color: #dfdfdf;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .switchSlider {
+    background-color: #16bd24;
+}
+input:focus + .switchSlider {
+    box-shadow: 0 0 1px #16bd24;
+}
+input:checked + .switchSlider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.pUsage{
+    width: 5%;
+}
+
 
 .sidenavL h3{
     padding: 1px 1px 1px 5px;

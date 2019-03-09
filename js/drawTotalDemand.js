@@ -19,7 +19,7 @@ function drawTotalDemand(hh){
     width: 320,
     height: 300,
     margin: {
-        l: 35,
+        l: 50,
         r: 5,
         b: 25,
         t: 25,
@@ -27,6 +27,11 @@ function drawTotalDemand(hh){
     },
     xaxis: {
         tickangle: 0
+    },
+    yaxis: {
+      title : {
+        text : "kWh"
+      }
     },
     paper_bgcolor: "transparent",
     plot_bgcolor: "transparent",

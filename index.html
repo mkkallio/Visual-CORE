@@ -15,37 +15,252 @@ crossorigin=""/>
 </head>
 <body>
 <div class="container">
-<!-- Navigation Sidebar -->
+<!--   Input sidebar     -->
 <div class="sidenavL">
-    <div id="navigation">
-        <a class="fas fa-info-circle" href="about.html"></a>
-        <a class="fas fa-question-circle" href="help.html"></a>
-    </div>
+    <!---   Village Inputs  -->
     <div id="villageInputs">
-        <h1>Inputs</h1>
-        <h3>Population</h3>
-        <input type="number" id="vpop">
-        <h3>Number of households</h3>
-        <input type="number" id="households">
-        <h3>kWh demand by household</h3>
-        <div class="slidecontainer">
-            <input type="range" min="0" max="50" value="5" step="0.1" class="slider" id="hh_kwh">
-            <a><span id="hhValue"></span> kWh / household</a>
+        <!-- Sub-tabs -->
+        <div id="navigation">
+            <div class="tooltip" id="gvinav">
+                <a class="fas fa-info-circle" onclick="showGvi()"></a> <!-- General village info -->
+                <span class="tooltiptext">General village information</span>
+            </div>
+            <div class="tooltip" id="hhnav">
+                <a class="fas fa-bath" class="tooltip" onclick="showHouseholds()"></a> <!-- Household appliances -->
+                <span class="tooltiptext">Household items</span>
+            </div>
+            <div class="tooltip" id="publicnav">
+                <a class="fas fa-building" class = "tooltip" onclick="showPublic()"></a> <!-- Public utilities infrastructure -->
+                <span class="tooltiptext">Public infrastructure</span>
+            </div>
+            <div class="tooltip" id="productivenav">
+                <a class="fas fa-wrench" class = "tooltip" onclick="showProductive()"></a> <!-- Productive infrastructure -->
+                <span class="tooltiptext">Productive infrastructure</span>
+            </div>
         </div>
-        <h3>kWh demand by person</h3>
-        <div class="slidecontainer">
-            <input type="range" min="0" max="10" value="0.5" step="0.1" class="slider" id="person_kwh">
-            <a><span id="personValue"></span> kWh / person</a>
+        <!-- General Village Information -->
+        <div id="gvi">
+            <h1>General information</h1>
+            <h3>Population</h3>
+            <input type="number" id="vpop">
+            <h3>Number of households</h3>
+            <input type="number" id="households">
+            <h3>kWh demand by household</h3>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="100" value="5" step="0.1" class="slider" id="hh_kwh">
+                <a><span id="hhValue"></span> kWh / household</a>
+            </div>
+            <h3>kWh demand by person</h3>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="10" value="0.5" step="0.1" class="slider" id="person_kwh">
+                <a><span id="personValue"></span> kWh / person</a>
+            </div>
+            <h3>Public utilities</h3>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="2000" value="200" step="0.5" class="slider" id="public_kwh">
+                <a><span id="publicValue"></span> kWh total public utilities usage</a>
+            </div>
+            <h3>Productive uses</h3>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="2000" value="500" step="0.5" class="slider" id="productive_kwh">
+                <a><span id="productiveValue"></span> kWh total productive usage</a>
+            </div>
         </div>
-        <h3>Public utilities</h3>
-        <div class="slidecontainer">
-            <input type="range" min="0" max="1000" value="200" step="0.5" class="slider" id="public_kwh">
-            <a><span id="publicValue"></span> kWh total public utilities usage</a>
+        <!-- Household Appliances -->
+        <div id="hhAppliances">
+            <h1>Household appliances</h1>
+            <div class="appliances">
+                <div>Air conditioner</div>
+                <label class="switch">
+                    <input type="checkbox" id="ac">
+                    <span class="switchSlider round"></span>
+                </label>
+                <div>
+                    <input type="number" class="hours" id="acHrs" placeholder="On for x hours">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Electric kettle</div>
+                <label class="switch">
+                    <input type="checkbox" id="kettle">
+                    <span class="switchSlider"></span>
+                </label>
+                <div>
+                    <input type="number" class="hours" id="kettleHrs" placeholder="On for x hours">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Stove</div>
+                <label class="switch">
+                        <input type="checkbox" id="stove">
+                        <span class="switchSlider"></span>
+                </label>
+                <div>
+                    <input type="number" class="hours" id="stoveHrs" placeholder="On for x hours">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Oven</div>
+                <label class="switch">
+                        <input type="checkbox" id="oven">
+                        <span class="switchSlider"></span>
+                </label>
+                <div>
+                    <input type="number" class="hours" id="ovenHrs" placeholder="On for x hours">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Television</div>
+                <label class="switch">
+                    <input type="checkbox" id="television">
+                    <span class="switchSlider"></span>
+                </label>
+                <div>
+                    <input type="number" class="hours" id="televisionHrs" placeholder="On for x hours">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Alarm clock radio</div>
+                <label class="switch" >
+                    <input type="checkbox" id="radio">
+                    <span class="switchSlider"></span>
+                </label>
+                <div>
+                    <input type="number" class="hours" id="radioHrs" placeholder="On for x hours">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Fridge</div>
+                <label class="switch">
+                    <input type="checkbox" id="fridge">
+                    <span class="switchSlider"></span>
+                </label>
+                <div>
+                    <input type="number" class="hours" id="fridgeHrs" placeholder="On for x hours">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Freezer</div>
+                <label class="switch">
+                    <input type="checkbox" id="freezer">
+                    <span class="switchSlider"></span>
+                </label>
+                <div>
+                    <input type="number" class="hours" id="freezerHrs" placeholder="On for x hours">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Phone charger</div>
+                <label class="switch">
+                    <input type="checkbox" id="charger">
+                    <span class="switchSlider"></span>
+                </label>
+                <div>
+                    <input type="number" class="hours" id="chargerHrs" placeholder="On for x hours">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Computer</div>
+                <label class="switch">
+                    <input type="checkbox" id="computer">
+                    <span class="switchSlider"></span>
+                </label>
+                <div>
+                    <input type="number" class="hours" id="computerHrs" placeholder="On for x hours">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Table fan</div>
+                <label class="switch">
+                    <input type="checkbox" id="fan">
+                    <span class="switchSlider"></span>
+                </label>
+                <div>
+                    <input type="number" class="hours" id="fanHrs" placeholder="On for x hours">
+                </div>
+            </div>
+            <h3>Redraw graphs based on these values</h3>
+            <button class="submit" onclick="calculateHHdemand()">Redraw!</button>
         </div>
-        <h3>Productive uses</h3>
-        <div class="slidecontainer">
-            <input type="range" min="0" max="1500" value="500" step="0.5" class="slider" id="productive_kwh">
-            <a><span id="productiveValue"></span> kWh total productive usage</a>
+        <!-- Public Infrastructure -->
+        <div id="publicis">
+            <h1>Public utilities</h1>
+            <div class="appliances">
+                <div>Water treatment (kWh / day) : </div>
+                <div>
+                    <input type="number" class="pUsage" id="wTreatment" placeholder="Daily usage..." value = "0">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Water purification systems (kWh / day) : </div>
+                <div>
+                    <input type="number" class="pUsage" id="wPurification" placeholder="Daily usage..." value = "0">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Water supply pumps (kWh / day) : </div>
+                <div>
+                    <input type="number" class="pUsage" id="wSupply" placeholder="Daily usage..." value = "0">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Telecom towers (kWh / day) : </div>
+                <div>
+                    <input type="number" class="pUsage" id="telecom" placeholder="Daily usage..." value = "0">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>ATMs (kWh / day) : </div>
+                <div>
+                    <input type="number" class="pUsage" id="atm" placeholder="Daily usage..." value = "0">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Hospitals / clinics (kWh / day) </div>
+                <div>
+                    <input type="number" class="pUsage" id="hospital" placeholder="Daily usage..." value = "0">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Medical cold-chain (kWh / day) : </div>
+                <div>
+                    <input type="number" class="pUsage" id="medicalCC" placeholder="Daily usage..." value = "0">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Schools (kWh / day) : </div>
+                <div>
+                    <input type="number" class="pUsage" id="school" placeholder="Daily usage..." value = "0">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Street lighting (kWh / day) : </div>
+                <div>
+                    <input type="number" class="pUsage" id="streetLight" placeholder="Daily usage..." value = "0">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Internet centers (kWh / day) : </div>
+                <div>
+                    <input type="number" class="pUsage" id="internet" placeholder="Daily usage..." value = "0">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Market place / Commercial hub (kWh / day) : </div>
+                <div>
+                    <input type="number" class="pUsage" id="commercial" placeholder="Daily usage..." value = "0">
+                </div>
+            </div>
+            <div class="appliances">
+                <div>Monasteries (kWh / day) : </div>
+                <div>
+                    <input type="number" class="pUsage" id="monastery" placeholder="Daily usage..." value = "0">
+                </div>
+            </div>
+        </div>
+        <!-- Productive Infrastructure -->
+        <div id="productiveis">
+            These are productive infrastructures
         </div>
     </div>
     <div id="townshipInputs">
@@ -53,6 +268,7 @@ crossorigin=""/>
         <h3>Population</h3>
         <input type="number" id="tpop">
     </div>
+    <!-- Rivers -->
     <div id="riverInputs">
         <h1>Inputs</h1>
         <h3>Waterflow</h3>
@@ -76,6 +292,7 @@ crossorigin=""/>
     </div>
 </div>
 </div>
+
 <!-- Dependencies -->
 <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
 integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
@@ -87,16 +304,19 @@ crossorigin=""></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script src="js/leaflet-search.src.js"></script>
 <script src="js/underscore-min.js"></script>
-<!-- Files -->
+<!-- Data files -->
 <script src="data/city_town.geojson" type="text/javascript"></script>
 <script src="data/townships.GeoJSON" type="text/javascript"></script>
 <script src="data/districts.geojson" type="text/javascript"></script>
 <script src="data/rivers.GeoJSON" type="text/javascript"></script>
 <script src="data/village_points.GeoJSON" type="text/javascript"></script>
 <script src="data/load_profiles.js" type="text/javascript"></script>
+<script src="data/power_usage_by_item.js" type="text/javascript"></script>
+<!-- Javascript files -->
 <script src="js/index.js"></script>
 <script src="js/drawLoadProfile.js"></script>
 <script src="js/drawTotalDemand.js"></script>
 <script src="js/map.js"></script>
+<script src="js/power_usages.js"></script>
 </body>
 </html>
